@@ -1,8 +1,12 @@
+from Player import *
+
 def setup():
-    size(2000, 1400)
+    size(1000, 700)
+
     
     
 
 def draw():
     background(15)
-    
+
+        
