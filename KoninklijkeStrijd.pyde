@@ -2,13 +2,17 @@ from Player import *
 from Button import *
 
 def setup():
-    global player1, player2, player3, player4, buttonAtt
-    size(1000, 700)
+    global player1, player2, player3, player4, buttonAtt, buttonBattle
+    size(1204, 677)
+    img = loadImage("background.png")
+    background(img)
     player1 = Player("Jayant", 3)
     player2 = Player("Dennis", 3)
     player3 = Player("Constantijn", 3)
     player4 = Player("Faraaz", 3)
     buttonAtt = Button(500, 350, 75, 40, "Val aan")
+    buttonBattle = Button(500, 400, 75, 40, "Vecht")
+
 
     
     
@@ -20,5 +24,11 @@ def draw():
     player3.show(10, 650)
     player4.show(950, 650)
     buttonAtt.show()
-
+    buttonBattle.show()
+    
+    # print(str(buttonAtt.x + buttonAtt.w) + ", " + str(buttonAtt.y))
         
+def mouseClicked():
+    if mouseX > buttonAtt.x and mouseX < buttonAtt.x + buttonAtt.w:
+        if mouseY > buttonAtt.y and mouseY < buttonAtt.y + buttonAtt.h:
+            print("jeetje joh")
