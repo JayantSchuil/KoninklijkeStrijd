@@ -6,5 +6,5 @@ def setup():
     startScreen = IntroScreen()
 
 def draw():
-    background(loadImage("intro.png"))
+    background(15)
     startScreen.show()
