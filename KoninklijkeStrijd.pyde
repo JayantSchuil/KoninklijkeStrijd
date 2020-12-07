@@ -1,7 +1,12 @@
-def setup():
-    size(1200, 900)
-    
+import Menu 
 
+def setup():
+    size(800, 600)
+    Menu.setup()
+    
 def draw():
-    background(15)
+    Menu.draw()
+    Menu.mouseClicked()
+
+    
     
