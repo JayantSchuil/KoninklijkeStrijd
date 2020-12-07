@@ -11,10 +11,6 @@ def setup():
     buttonAtt = Button(500, 350, 75, 40, "Val aan")
     buttonBattle = Button(500, 400, 75, 40, "Vecht")
 
-
-    
-    
-
 def draw():
     background(15)
     player1.show(10, 20)
@@ -23,7 +19,25 @@ def draw():
     player4.show(950, 650)
     buttonAtt.show()
     buttonBattle.show()
-    buttonAtt.Clicked() 
-    if button.Clicked :
-
+    
+def mousePressed():
+    global selectedPlayer
+    if mouseX < width/2 - 100 and mouseY < height/2 - 100:
+        selectedPlayer = player1
+        print("Jayant")
+    elif mouseX > width/2 + 100 and mouseY < height/2 - 100:
+        selectedPlayer = player2
+        print("Dennis")
+    elif mouseX < width/2 - 100 and mouseY > height/2 + 100:
+        selectedPlayer = player3
+        print("Constantijn")
+    elif mouseX > width/2 + 100 and mouseY > height/2 - 100:
+        selectedPlayer = player4
+        print("Faraaz")
+        
+def mouseReleased():
+    if buttonAtt.mouseOverButton():
+        selectedPlayer.health -= 1
+        
+    
         

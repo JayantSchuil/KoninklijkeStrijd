@@ -8,6 +8,7 @@ class Player:
         text(self.name, x, y)
         for i in range(self.health):
             text("X", x + 10 * i, y + 15)
-    
+
+        
     
     
