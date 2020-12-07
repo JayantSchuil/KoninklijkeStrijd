@@ -12,3 +12,9 @@ class Button:
         rect(self.x, self.y, self.w, self.h)
         fill(0)
         text(self.buttonText, self.x - 27, self.y + 5, 10)
+    
+
+    def Clicked(self):
+        if mouseX > self.x and mouseX < self.x + self.w:
+            if mouseY > self.y and mouseY < self.y + self.h:
+                print("jeetje joh")

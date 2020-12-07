@@ -23,8 +23,7 @@ def draw():
     player4.show(950, 650)
     buttonAtt.show()
     buttonBattle.show()
+    buttonAtt.Clicked() 
+    if button.Clicked :
+
         
-def mouseClicked():
-    if mouseX > buttonAtt.x and mouseX < buttonAtt.x + buttonAtt.w:
-        if mouseY > buttonAtt.y and mouseY < buttonAtt.y + buttonAtt.h:
-            print("jeetje joh")
