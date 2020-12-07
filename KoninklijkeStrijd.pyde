@@ -4,8 +4,8 @@ from Button import *
 def setup():
     global player1, player2, player3, player4, buttonAtt, buttonBattle
     size(1204, 677)
-    img = loadImage("background.png")
-    background(img)
+    #img = loadImage("background.jpg")
+    #background(img)
     player1 = Player("Jayant", 3)
     player2 = Player("Dennis", 3)
     player3 = Player("Constantijn", 3)
@@ -25,10 +25,9 @@ def draw():
     player4.show(950, 650)
     buttonAtt.show()
     buttonBattle.show()
+    buttonAtt.Clicked() 
+    if button.Clicked :
+        
     
     # print(str(buttonAtt.x + buttonAtt.w) + ", " + str(buttonAtt.y))
         
-def mouseClicked():
-    if mouseX > buttonAtt.x and mouseX < buttonAtt.x + buttonAtt.w:
-        if mouseY > buttonAtt.y and mouseY < buttonAtt.y + buttonAtt.h:
-            print("jeetje joh")
