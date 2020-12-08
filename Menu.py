@@ -1,53 +1,33 @@
 color_rec = 255
-
+recglow = False
+from Button import*
 
 def setup():
     size(800, 600)
-    global pg
-    pg = createGraphics(150, 55)
+    global fight_button, credit_button
+    fight_button = Button(400,200,165,55,'Fight')
+    credit_button = Button(400,275,165,55,'Credit')
+    
     
 def draw():
-    rectover = True if mouseX > 315 and mouseX < 315 + 150 and mouseY > 300 and mouseY < 300 + 55 else False 
-    if rectover == True:
-        fill(51)
-    else: 
-        fill(255)
-    rec(315,300,150,55)
-    rec(315,225,150,55)
-    texts('Credit', 350, 335)
-    texts('FIGHT', 350, 260)
-        
-def rectangle():
-    pg.beginDraw()
-    pg.background(255)
-    pg.filter(BLUR, 3)
-    pg.stroke(0)
-    pg.endDraw()
-    image(pg, 200, 50)
+    credit_button.show()
+    fight_button.show()
+    if fight_button.mouseOverButton():
+        recglow()
     
-def rec(w,h,sizew,sizeh): 
-    global color_rec
+    
+    
+    
+def recglow():
     fill(color_rec)
-    rect(w,h,sizew,sizeh)
-    if mouseX > w and mouseX < w + sizew and mouseY > h and mouseY < h + sizeh:
-        recglow(w,h,sizew,sizeh)
-   
-
-def recglow(w,h,sizew,sizeh):
-    global color_rec
-    fill(color_rec)
-    rect(w,h,sizew,sizeh)
     filter(BLUR, 4)
     stroke(0)
     smooth()
-    
-    
-def texts(x,w,h):
-    fill(0, 102, 153)
-    textSize(23)
-    text(x,w, h)
+    fight_button.show()
+    print(recglow)
     
 
+    
 
 
         
