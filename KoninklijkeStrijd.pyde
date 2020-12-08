@@ -6,7 +6,6 @@ def setup():
     
 def draw():
     Menu.draw()
-    Menu.mouseClicked()
 
     
     
