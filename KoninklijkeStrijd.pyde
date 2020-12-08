@@ -5,7 +5,6 @@ def setup():
     size(1000, 700)
     playerScreen = PlayerScreen()
     playerScreen.initialise()
-    player4 = Player("Faraaz", 3)
 
 def draw():
     background(15)
@@ -15,16 +14,16 @@ def mousePressed():
     global selectedPlayer
     if mouseX < width/2 - 100 and mouseY < height/2 - 100:
         selectedPlayer = playerScreen.player1
-        print("Jayant")
+        print(selectedPlayer.name)
     elif mouseX > width/2 + 100 and mouseY < height/2 - 100:
         selectedPlayer = playerScreen.player2
-        print("Dennis")
+        print(selectedPlayer.name)
     elif mouseX < width/2 - 100 and mouseY > height/2 + 100:
         selectedPlayer = playerScreen.player3
-        print("Constantijn")
+        print(selectedPlayer.name)
     elif mouseX > width/2 + 100 and mouseY > height/2 - 100:
         selectedPlayer = playerScreen.player4
-        print("Faraaz")
+        print(selectedPlayer.name)
         
 def mouseReleased():
     if playerScreen.buttonAtt.mouseOverButton():
