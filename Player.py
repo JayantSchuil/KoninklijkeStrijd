@@ -1,13 +1,17 @@
 class Player:
-    def __init__(self, name, health):
+    def __init__(self, name, health, colour):
         self.name = name
         self.health = health
+        self.colour = colour
+        #Load the heart png with the right colour
+        self.heartImage = loadImage("images/heart_" + self.colour + ".png")
 
     def show(self, x, y):
         fill(255)
         text(self.name, x, y)
         for i in range(self.health):
-            text("X", x + 10 * i, y + 15)
+            #Place the image of the heart with on the right place.
+            image(self.heartImage, x + 17 * i, y + 15, 15, 15)
 
         
     
