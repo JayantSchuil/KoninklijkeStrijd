@@ -1,9 +1,21 @@
-from Button import *
-
 class IntroScreen:
     def  __init__(self):
-        self.startButton = Button(600, 800, 80, 40, "Start")
+        self.img = loadImage("intro.png")
+        self.opacity = 0.0
+        self.timer = 0
+        self.interval = 1.8
+        self.fadeOut = False
 
     def show(self):
-        background(loadImage("intro.png"))
-        self.startButton.show()
+        self.opacity = self.opacity + self.interval
+        if self.opacity > 255.0:
+            if self.timer == 48:
+                self.interval = -2.5
+                self.fadeOut = True
+            else:
+                self.timer += 1
+        elif self.fadeOut and self.opacity < 0.0:
+            #set new status here
+            print("Status = menu")
+        image(self.img, 0, 0)
+        tint(255, self.opacity)
