@@ -3,6 +3,7 @@ from PlayerScreen import *
 def setup():
     global playerScreen startscreen
     size(1000, 700)
+    Menu.setup()
     startScreen = IntroScreen()
     playerScreen = PlayerScreen()
     playerScreen.initialise()
@@ -10,6 +11,7 @@ def setup():
 def draw():
     background(255)
     playerScreen.show()
+    Menu.draw()
     startScreen.show()
     
 def mousePressed():
