@@ -1,6 +1,6 @@
 
 *.class
 introScreen$py.class
+PlayerScreen$py.class
 Button$py.class
-introScreen$py.class
-introScreen$py.class
+Player$py.class
