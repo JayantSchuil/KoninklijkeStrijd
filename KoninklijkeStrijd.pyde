@@ -1,14 +1,16 @@
 from PlayerScreen import *
 
 def setup():
-    global playerScreen
+    global playerScreen startscreen
     size(1000, 700)
+    startScreen = IntroScreen()
     playerScreen = PlayerScreen()
     playerScreen.initialise()
 
 def draw():
-    background(15)
+    background(255)
     playerScreen.show()
+    startScreen.show()
     
 def mousePressed():
     global selectedPlayer
@@ -28,6 +30,3 @@ def mousePressed():
 def mouseReleased():
     if playerScreen.buttonAtt.mouseOverButton():
         selectedPlayer.health -= 1
-        
-    
-        
