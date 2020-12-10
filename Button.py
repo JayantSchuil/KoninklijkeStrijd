@@ -5,7 +5,6 @@ class Button:
         self.w = w
         self.h = h
         self.buttonText = buttonText
-        self.textSize = textSize(23)
     
     def show(self):
         rectMode(CENTER)
