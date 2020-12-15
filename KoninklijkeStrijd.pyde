@@ -1,4 +1,4 @@
-import Menu 
+import Menu
 
 def setup():
     size(800, 600)
@@ -7,5 +7,6 @@ def setup():
 def draw():
     Menu.draw()
 
-    
+def mouseClicked():
+    Menu.mouseClicked()
     
