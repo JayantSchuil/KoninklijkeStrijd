@@ -39,9 +39,9 @@ def drawCredits():
         x = -100 
     texts('Gemaakt door:', 400 , x)
     texts('Sharoek', 400 , x + 25)
-    texts('Jayant:', 400 , x + 50)
-    texts('Dennis:', 400 , x + 75)
-    texts('Faraaz:', 400 , x + 100)
+    texts('Jayant', 400 , x + 50)
+    texts('Dennis', 400 , x + 75)
+    texts('Faraaz', 400 , x + 100)
     x += 5   
     if mouseX <= 703 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309:
         texts('Return', 675, 325)
