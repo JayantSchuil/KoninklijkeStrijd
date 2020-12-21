@@ -2,8 +2,8 @@ SCREENSTATE = 0
 bgIndex = 0
 x = -100
 
+
 def setup():
-    size(800, 600)
     global bg, SCREENSTATE, bgImages
     frameRate(25)
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
@@ -37,6 +37,13 @@ def drawCredits():
     rect(600, 300, 150, 200)
     if x == 620:
         x = -100 
+    texts('Intro:', 400 , x - 275)   
+    texts('Dennis', 400 , x - 250)   
+    texts('Battle:', 400 , x - 200)    
+    texts('Jayant', 400 , x - 175)    
+    texts('Faraaz', 400 , x - 150)   
+    texts('Menu:', 400 , x - 100)    
+    texts('Sharoek', 400 , x - 75)    
     texts('Gemaakt door:', 400 , x)
     texts('Sharoek', 400 , x + 25)
     texts('Jayant', 400 , x + 50)
@@ -80,6 +87,7 @@ def mouseClicked():
         SCREENSTATE = 0
     if SCREENSTATE == 0 and mouseX >= 625 and mouseY <= 423 and mouseY >= 411: #Quit Game 
         SCREENSTATE = 3
+
     
 
         
