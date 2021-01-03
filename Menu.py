@@ -35,7 +35,7 @@ def drawCredits():
     noStroke()
     fill(0,50)
     rect(600, 300, 150, 200)
-    if x == 620:
+    if x == 900:
         x = -100 
     texts('Intro:', 400 , x - 275)   
     texts('Dennis', 400 , x - 250)   
