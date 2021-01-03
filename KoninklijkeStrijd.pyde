@@ -1,7 +1,8 @@
 from PlayerScreen import *
+from IntroScreen import *
 
 def setup():
-    global playerScreen startscreen
+    global playerScreen, startScreen
     size(1000, 700)
     startScreen = IntroScreen()
     playerScreen = PlayerScreen()
