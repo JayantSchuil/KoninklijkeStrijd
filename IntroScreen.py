@@ -1,4 +1,3 @@
-add_library("sound")
 class IntroScreen:
     def  __init__(self):
         self.img = loadImage("intro.png")
