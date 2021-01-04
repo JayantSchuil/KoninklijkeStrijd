@@ -3,7 +3,7 @@ from Button import *
 
 class PlayerScreen:
     def __init__(self):
-        print("Jeetje Joh")
+        print("Jeetje Joh.")
     
     def initialise(self):
         global player1, player2, player3, player4, buttonAtt, buttonBattle
