@@ -1,11 +1,15 @@
+add_library("sound")
 from PlayerScreen import *
 from IntroScreen import *
 import Menu
 
 def setup():
-    global startScreen
+    global startScreen, sf, click
     size(800, 600)
     startScreen = IntroScreen()
+    sf = SoundFile(this,"menu.mp3")
+    click = SoundFile(this,"click.wav")
+    sf.play()
     Menu.setup()
 
 def draw():
@@ -19,5 +23,6 @@ def mouseReleased():
     Menu.mouseReleased()
         
 def mouseClicked():
+    if Menu.mouseClicked:
+        click.play()
     Menu.mouseClicked()
-        
