@@ -109,7 +109,8 @@ def mousePressed():
             print(selectedPlayer.name) 
 
 def mouseReleased():
-    if playerScreen.buttonAtt.mouseOverButton():
-        selectedPlayer.health -= 1
+    if SCREENSTATE ==1: 
+        if playerScreen.buttonAtt.mouseOverButton():
+            selectedPlayer.health -= 1
         
         
