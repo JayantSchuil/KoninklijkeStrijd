@@ -1,12 +1,14 @@
 SCREENSTATE = 0 
 bgIndex = 0
 x = -100
-
+from PlayerScreen import *
 
 def setup():
-    global bg, SCREENSTATE, bgImages
+    global bg, SCREENSTATE, bgImages, playerScreen
     frameRate(25)
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
+    playerScreen = PlayerScreen()
+    playerScreen.initialise()
         
 def draw():
     global bgIndex
@@ -14,6 +16,8 @@ def draw():
     bgIndex += 1
     if (SCREENSTATE == 0):
         drawMenu()
+    if (SCREENSTATE == 1):
+        playerScreen.show()
     if (SCREENSTATE == 2):
         drawCredits() 
     if (SCREENSTATE == 3):
@@ -82,14 +86,30 @@ def mouseClicked():
     if SCREENSTATE == 0 and mouseX <= 711 and mouseX >= 639 and mouseY <= 372 and mouseY >= 360: #Credits
         SCREENSTATE = 2
     if SCREENSTATE == 0 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309: #Battle 
-        SCREENSTATE = 0
+        SCREENSTATE = 1
     if SCREENSTATE == 2 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309: #Return
         SCREENSTATE = 0
     if SCREENSTATE == 0 and mouseX >= 625 and mouseY <= 423 and mouseY >= 411: #Quit Game 
         SCREENSTATE = 3
 
-    
+def mousePressed():
+    global selectedPlayer
+    if SCREENSTATE ==1: 
+        if mouseX < width/2 - 100 and mouseY < height/2 - 100:
+            selectedPlayer = playerScreen.player1
+            print(selectedPlayer.name)
+        elif mouseX > width/2 + 100 and mouseY < height/2 - 100:
+            selectedPlayer = playerScreen.player2
+            print(selectedPlayer.name)
+        elif mouseX < width/2 - 100 and mouseY > height/2 + 100:
+            selectedPlayer = playerScreen.player3
+            print(selectedPlayer.name)
+        elif mouseX > width/2 + 100 and mouseY > height/2 - 100:
+            selectedPlayer = playerScreen.player4
+            print(selectedPlayer.name) 
 
-        
+def mouseReleased():
+    if playerScreen.buttonAtt.mouseOverButton():
+        selectedPlayer.health -= 1
         
         
