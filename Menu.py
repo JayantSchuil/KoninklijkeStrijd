@@ -5,7 +5,7 @@ from PlayerScreen import *
 
 def setup():
     global bg, SCREENSTATE, bgImages, playerScreen
-    frameRate(25)
+    frameRate(27)
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
     playerScreen = PlayerScreen()
     playerScreen.initialise()
@@ -110,7 +110,10 @@ def mousePressed():
 
 def mouseReleased():
     if SCREENSTATE ==1: 
-        if playerScreen.buttonAtt.mouseOverButton():
-            selectedPlayer.health -= 1
-        
+        try: 
+            if playerScreen.buttonAtt.mouseOverButton():
+                selectedPlayer.health -= 1
+        except:
+            if playerScreen.buttonAtt.mouseOverButton():
+                pass
         

@@ -9,7 +9,7 @@ def setup():
     startScreen = IntroScreen()
     sf = SoundFile(this,"menu.mp3")
     click = SoundFile(this,"click.wav")
-    sf.amp(0.3)
+    sf.loop(1, 0.3)
     click.amp(0.3)
     sf.play()
     Menu.setup()
