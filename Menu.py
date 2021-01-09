@@ -46,8 +46,8 @@ def drawCredits():
     texts('Battle:', 400 , x - 200)    
     texts('Jayant', 400 , x - 175)    
     texts('Faraaz', 400 , x - 150)   
-    texts('Menu:', 400 , x - 100)    
-    texts('Sharoek', 400 , x - 75)    
+    texts('Menu & Sound:', 400 , x - 100)    
+    texts('Sharoek', 400 , x - 75)      
     texts('Gemaakt door:', 400 , x)
     texts('Sharoek', 400 , x + 25)
     texts('Jayant', 400 , x + 50)
@@ -91,20 +91,21 @@ def mouseClicked():
         SCREENSTATE = 0
     if SCREENSTATE == 0 and mouseX >= 625 and mouseY <= 423 and mouseY >= 411: #Quit Game 
         SCREENSTATE = 3
+        
 
 def mousePressed():
     global selectedPlayer
     if SCREENSTATE ==1: 
-        if mouseX < width/2 - 100 and mouseY < height/2 - 100:
+        if mouseX < 70 and mouseX > 10 and mouseY < 20 and mouseY > 6: #Jayant
             selectedPlayer = playerScreen.player1
             print(selectedPlayer.name)
-        elif mouseX > width/2 + 100 and mouseY < height/2 - 100:
+        elif mouseX < 732 and mouseX > 667 and mouseY < 20 and mouseY > 6: #Dennis
             selectedPlayer = playerScreen.player2
             print(selectedPlayer.name)
-        elif mouseX < width/2 - 100 and mouseY > height/2 + 100:
+        elif mouseX < 87 and mouseX > 10 and mouseY >556  and mouseY < 569: #sharoek
             selectedPlayer = playerScreen.player3
             print(selectedPlayer.name)
-        elif mouseX > width/2 + 100 and mouseY > height/2 - 100:
+        elif mouseX < 730 and mouseX > 670 and mouseY > 556 and mouseY < 569  : #Faraaz
             selectedPlayer = playerScreen.player4
             print(selectedPlayer.name) 
 
