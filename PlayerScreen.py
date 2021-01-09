@@ -25,6 +25,12 @@ class PlayerScreen:
         fill('#c4d6e2')
         textSize(20)
         textAlign(CENTER)
-        text('Return', 600, 325)
+        text('Return', 675, 325)
+        if mouseX <= 703 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309:
+            text('Return', 675, 325)
+            fill(255)
+        else:
+            noStroke()
+            fill('#c4d6e2')
 
     
