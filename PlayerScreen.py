@@ -1,12 +1,13 @@
 from Player import *
 from Button import *
 
+
 class PlayerScreen:
     def __init__(self):
          print("Jeetje Joh.")
     
     def initialise(self):
-        global player1, player2, player3, player4, buttonAtt, buttonBattle
+        global player1, player2, player3, player4, buttonAtt, buttonBattle, SCREENSTATE
         self.player1 = Player("Jayant", 3, "green")
         self.player2 = Player("Dennis", 3, "red")
         self.player3 = Player("Sharoek", 3, "yellow")
@@ -22,15 +23,22 @@ class PlayerScreen:
         self.player4.show(width - 100, height - 30)
         self.buttonAtt.show()
         self.buttonBattle.show()
+        noStroke()
+        fill(0,50)
+        rectMode(CORNER)
+        rect(600, 300, 150, 200)
         fill('#c4d6e2')
         textSize(20)
         textAlign(CENTER)
         text('Return', 675, 325)
-        if mouseX <= 703 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309:
+        if mouseX >= 646 and mouseX <= 706 and mouseY <= 323 and mouseY >= 309:
             text('Return', 675, 325)
             fill(255)
         else:
             noStroke()
             fill('#c4d6e2')
+            
 
+
+    
     

@@ -1,7 +1,10 @@
+from PlayerScreen import *
 SCREENSTATE = 0 
 bgIndex = 0
 x = -100
-from PlayerScreen import *
+
+start_time = millis()
+end_time = millis() + 9000
 
 def setup():
     global bg, SCREENSTATE, bgImages, playerScreen
@@ -9,8 +12,9 @@ def setup():
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
     playerScreen = PlayerScreen()
     playerScreen.initialise()
-        
+    
 def draw():
+    print(mouseX)
     global bgIndex
     background(bgImages[bgIndex%181])
     bgIndex += 1
@@ -22,6 +26,8 @@ def draw():
         drawCredits() 
     if (SCREENSTATE == 3):
         exit()
+        
+        
                             
 def drawMenu(): 
     global SCREENSTATE, bgIndex
@@ -81,20 +87,25 @@ def mouseOver():
         noStroke()
         fill('#c4d6e2')
 
+
+
+
 def mouseClicked():
     global SCREENSTATE
-    if SCREENSTATE == 0 and mouseX <= 711 and mouseX >= 639 and mouseY <= 372 and mouseY >= 360: #Credits
+    if SCREENSTATE == 0 and mouseX <= 707 and mouseX >= 639 and mouseY <= 372 and mouseY >= 360: #Credits
         SCREENSTATE = 2
-    if SCREENSTATE == 0 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309: #Battle 
-        SCREENSTATE = 1
-    if SCREENSTATE == 2 and mouseX >= 646 and mouseY <= 323 and mouseY >= 309: #Return
+    elif SCREENSTATE == 2 or SCREENSTATE == 1 and mouseX >= 646 and mouseX <= 706 and mouseY <= 323 and mouseY >= 309: #Return
         SCREENSTATE = 0
-    if SCREENSTATE == 0 and mouseX >= 625 and mouseY <= 423 and mouseY >= 411: #Quit Game 
-        SCREENSTATE = 3
-        
+    elif SCREENSTATE == 0 and mouseX >= 625 and mouseX <= 747 and mouseY <= 423 and mouseY >= 411: #Quit Game 
+        SCREENSTATE = 3    
+    elif SCREENSTATE == 0 and mouseX >= 651 and mouseX <= 699  and mouseY <= 323 and mouseY >= 309:#battle 
+        SCREENSTATE = 1   
 
+    
+
+        
 def mousePressed():
-    global selectedPlayer
+    global selectedPlayer, SCREENSTATE
     if SCREENSTATE ==1: 
         if mouseX < 70 and mouseX > 10 and mouseY < 20 and mouseY > 6: #Jayant
             selectedPlayer = playerScreen.player1
@@ -108,13 +119,23 @@ def mousePressed():
         elif mouseX < 730 and mouseX > 670 and mouseY > 556 and mouseY < 569  : #Faraaz
             selectedPlayer = playerScreen.player4
             print(selectedPlayer.name) 
+   
+    
+
+
+
 
 def mouseReleased():
+    global SCREENSTATE        
     if SCREENSTATE ==1: 
         try: 
             if playerScreen.buttonAtt.mouseOverButton():
                 selectedPlayer.health -= 1
+            if playerScreen.buttonBattle.mouseOverButton():
+                    if start_time < end_time:
+                            print('test')
         except:
             if playerScreen.buttonAtt.mouseOverButton():
                 pass
-        
+            if playerScreen.buttonBattle.mouseOverButton():
+                pass    

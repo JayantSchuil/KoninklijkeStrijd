@@ -7,7 +7,7 @@ class Button:
         self.buttonText = buttonText
     
     def show(self):
-        rectMode(CENTER)
+        rectMode(CENTER)   
         fill(0,50)
         rect(self.x, self.y, self.w, self.h)
         fill(255)

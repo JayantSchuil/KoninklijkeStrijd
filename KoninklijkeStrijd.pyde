@@ -25,6 +25,8 @@ def mouseReleased():
     Menu.mouseReleased()
         
 def mouseClicked():
+    Menu.mouseClicked()
     if Menu.mouseClicked:
         click.play()
-    Menu.mouseClicked()
+
+    
