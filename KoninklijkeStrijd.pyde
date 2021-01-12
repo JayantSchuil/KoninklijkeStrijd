@@ -29,4 +29,8 @@ def mouseClicked():
     if Menu.mouseClicked:
         click.play()
 
+def keyPressed():
+    Menu.keyPressed()
     
+def keyReleased():
+    Menu.keyReleased()    

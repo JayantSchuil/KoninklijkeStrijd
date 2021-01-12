@@ -1,21 +1,26 @@
 from PlayerScreen import *
+from minigame import *
 SCREENSTATE = 0 
 bgIndex = 0
 x = -100
 time = '3'
 interval = 3
+start = 'OFF'
 
 def setup():
-    global bg, SCREENSTATE, bgImages, playerScreen, start
+    global bg, SCREENSTATE, bgImages, playerScreen, start, minigame
     frameRate(27)
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
     playerScreen = PlayerScreen()
     playerScreen.initialise()
-    start = 'OFF'
+    minigame = minigame()
+    minigame.initialise()
+    
+    
     
 def draw():
-    global bgIndex, start, interval, begin
-    background(bgImages[bgIndex%181])
+    global bgIndex, start, interval, begin, minigame, SCREENSTATE
+    background(bgImages[bgIndex%181]) 
     bgIndex += 1
     if (SCREENSTATE == 0):
         drawMenu()
@@ -27,8 +32,15 @@ def draw():
         drawCredits() 
     if (SCREENSTATE == 3):
         exit()
-        
-        
+    if (SCREENSTATE == 4):
+        minigame.show()
+        if minigame.winnerDecided:
+            if minigame.winTimer >= 60:
+                minigame.reset()
+                SCREENSTATE = 1
+            else:
+                minigame.winTimer += 1
+                   
                             
 def drawMenu(): 
     global SCREENSTATE, bgIndex
@@ -89,9 +101,15 @@ def mouseOver():
         fill('#c4d6e2')
 
 def timer():
+    global start, time, SCREENSTATE
     t = interval-int(millis()-begin)/1000
-    time = nf(t, 1)    
+    time = nf(t, 1)  
+    textSize(50)  
     text(time,400,100)
+    if time == '0':
+        if millis() > 25000:
+            start = 'OFF'
+            SCREENSTATE = 4
 
 
 def mouseClicked():
@@ -138,3 +156,19 @@ def mouseReleased():
         except:
             if playerScreen.buttonAtt.mouseOverButton():
                 pass
+                
+def keyPressed():
+    if SCREENSTATE == 4 and minigame.gameActive:
+        if key == 'z' and not minigame.p1keyDown:
+            minigame.p1score += 1
+            minigame.p1keyDown = True
+        if key == 'm' and not minigame.p2keyDown:
+            minigame.p2score += 1
+            minigame.p2keyDown = True
+
+def keyReleased():
+    if SCREENSTATE == 4 and minigame.gameActive:
+        if key == 'z' and minigame.p1keyDown:
+            minigame.p1keyDown = False
+        if key == 'm' and minigame.p2keyDown:
+            minigame.p2keyDown = False
