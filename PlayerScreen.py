@@ -15,9 +15,9 @@ class PlayerScreen:
         self.buttonBattle = Button(width / 2, 450 / 2, 120, 60, "Vecht")
         
     def show(self):
-        self.player1.show(40, 20)
-        self.player2.show(width - 100, 20)
-        self.player3.show(50, height - 20)
-        self.player4.show(width - 100, height - 20)
+        self.player1.show(50, 40)
+        self.player2.show(width - 100, 40)
+        self.player3.show(50, height - 40)
+        self.player4.show(width - 100, height - 40)
         self.buttonAtt.show()
         self.buttonBattle.show()
