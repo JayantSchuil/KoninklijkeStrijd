@@ -2,26 +2,27 @@ from PlayerScreen import *
 SCREENSTATE = 0 
 bgIndex = 0
 x = -100
-
-start_time = millis()
-end_time = millis() + 9000
+time = '3'
+interval = 3
 
 def setup():
-    global bg, SCREENSTATE, bgImages, playerScreen
+    global bg, SCREENSTATE, bgImages, playerScreen, start
     frameRate(27)
     bgImages = [loadImage(str(i).zfill(3) + ".jpg") for i in range(10, 191)]
     playerScreen = PlayerScreen()
     playerScreen.initialise()
+    start = 'OFF'
     
 def draw():
-    print(mouseX)
-    global bgIndex
+    global bgIndex, start, interval, begin
     background(bgImages[bgIndex%181])
     bgIndex += 1
     if (SCREENSTATE == 0):
         drawMenu()
     if (SCREENSTATE == 1):
         playerScreen.show()
+        if start == 'ON':
+            timer()
     if (SCREENSTATE == 2):
         drawCredits() 
     if (SCREENSTATE == 3):
@@ -87,7 +88,10 @@ def mouseOver():
         noStroke()
         fill('#c4d6e2')
 
-
+def timer():
+    t = interval-int(millis()-begin)/1000
+    time = nf(t, 1)    
+    text(time,400,100)
 
 
 def mouseClicked():
@@ -119,23 +123,18 @@ def mousePressed():
         elif mouseX < 730 and mouseX > 670 and mouseY > 556 and mouseY < 569  : #Faraaz
             selectedPlayer = playerScreen.player4
             print(selectedPlayer.name) 
-   
-    
-
-
 
 
 def mouseReleased():
-    global SCREENSTATE        
+    global SCREENSTATE , start, begin    
     if SCREENSTATE ==1: 
         try: 
             if playerScreen.buttonAtt.mouseOverButton():
-                selectedPlayer.health -= 1
+                selectedPlayer.health -= 1 
             if playerScreen.buttonBattle.mouseOverButton():
-                    if start_time < end_time:
-                            print('test')
+                if start == 'OFF':
+                    start = 'ON'
+                    begin = millis()                
         except:
             if playerScreen.buttonAtt.mouseOverButton():
                 pass
-            if playerScreen.buttonBattle.mouseOverButton():
-                pass    
