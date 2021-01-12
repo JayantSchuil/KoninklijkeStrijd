@@ -14,7 +14,7 @@ def setup():
     minigame.initialise()
         
 def draw():
-    global bgIndex
+    global bgIndex, SCREENSTATE
     background(bgImages[bgIndex%181])
     bgIndex += 1
     if (SCREENSTATE == 0):
@@ -27,7 +27,13 @@ def draw():
         exit()
     if (SCREENSTATE == 4):
         minigame.show()
-                            
+        if minigame.winnerDecided:
+            if minigame.winTimer >= 60:
+                minigame.reset()
+                SCREENSTATE = 1
+            else:
+                minigame.winTimer += 1
+
 def drawMenu(): 
     global SCREENSTATE, bgIndex
     texts('Battle', 675, 325)
@@ -125,7 +131,7 @@ def mouseReleased():
                 pass
 
 def keyPressed():
-    if SCREENSTATE == 4:
+    if SCREENSTATE == 4 and minigame.gameActive:
         if key == 'z' and not minigame.p1keyDown:
             minigame.p1score += 1
             minigame.p1keyDown = True
@@ -134,7 +140,7 @@ def keyPressed():
             minigame.p2keyDown = True
 
 def keyReleased():
-    if SCREENSTATE == 4:
+    if SCREENSTATE == 4 and minigame.gameActive:
         if key == 'z' and minigame.p1keyDown:
             minigame.p1keyDown = False
         if key == 'm' and minigame.p2keyDown:
