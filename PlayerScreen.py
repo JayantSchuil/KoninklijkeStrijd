@@ -18,21 +18,21 @@ class PlayerScreen:
 
         
     def show(self):
-        self.player1.show(50, 50)
-        self.player2.show(width - 100, 50)
-        self.player3.show(50, height - 40)
-        self.player4.show(width - 100, height - 40)
+        self.player1.show(70, 50)
+        self.player2.show(width - 160, 50)
+        self.player3.show(70, height - 60)
+        self.player4.show(width - 160, height - 60)
         #Lelijke code om te checken of een speler gewonnen heeft
-        if self.player1.health > 0 and self.player2.health == 0 and self.player3.health == 0 and self.player4.health == 0:
+        if self.player1.health > 0 and self.player2.health <= 0 and self.player3.health <= 0 and self.player4.health <= 0:
             fill(255)
             text(self.player1.name + " is de koning!", 400, 400)
-        elif self.player2.health > 0 and self.player1.health == 0 and self.player3.health == 0 and self.player4.health == 0:
+        elif self.player2.health > 0 and self.player1.health <= 0 and self.player3.health <= 0 and self.player4.health <= 0:
             fill(255)
             text(self.player2.name + " is de koning!", width/2, height/2)
-        elif self.player3.health > 0 and self.player2.health == 0 and self.player1.health == 0 and self.player4.health == 0:
+        elif self.player3.health > 0 and self.player2.health <= 0 and self.player1.health <= 0 and self.player4.health <= 0:
             fill(255)
             text(self.player3.name + " is de koning!", width/2, height/2)
-        elif self.player4.health > 0 and self.player2.health == 0 and self.player3.health == 0 and self.player1.health == 0:
+        elif self.player4.health > 0 and self.player2.health <= 0 and self.player3.health <= 0 and self.player1.health <= 0:
             fill(255)
             text(self.player4.name + " is de koning!", width/2, height/2)
         else:

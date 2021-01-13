@@ -157,18 +157,18 @@ def timer():
 def mousePressed():
     global selectedPlayer, SCREENSTATE
     if SCREENSTATE ==1: 
-        if mouseX < 70 and mouseX > 10 and mouseY < 49 and mouseY > 35: #Speler 1
+        if mouseX < width/2 - 100 and mouseY < height/2 - 100:
             selectedPlayer = playerScreen.player1
             print(selectedPlayer.name)
-        elif mouseX < 732 and mouseX > 667 and mouseY < 49 and mouseY > 35: #Speler 2
+        elif mouseX > width/2 + 100 and mouseY < height/2 - 100:
             selectedPlayer = playerScreen.player2
             print(selectedPlayer.name)
-        elif mouseX < 87 and mouseX > 10 and mouseY > 543  and mouseY < 562: #Speler 3
+        elif mouseX < width/2 - 100 and mouseY > height/2 + 100:
             selectedPlayer = playerScreen.player3
             print(selectedPlayer.name)
-        elif mouseX < 730 and mouseX > 670 and mouseY > 543 and mouseY < 562  : #Speler 4
+        elif mouseX > width/2 + 100 and mouseY > height/2 - 100:
             selectedPlayer = playerScreen.player4
-            print(selectedPlayer.name) 
+            print(selectedPlayer.name)
 
         
 def mouseReleased():
