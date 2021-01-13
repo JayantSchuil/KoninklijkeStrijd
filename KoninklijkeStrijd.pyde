@@ -1,3 +1,4 @@
+#Author: Sharoek Mahboeb - 1018492
 add_library("sound")
 add_library('gifAnimation')
 from IntroScreen import *
@@ -17,6 +18,7 @@ idle2On = 'ON'
 
 def setup():
     global loopingGif, startScreen, sf, click, SCREENSTATE, playerScreen, start, minigame,attack1, idle, attack2, attack1, idle2
+ 
     size(800, 600)
     frameRate(27)
     playerScreen = PlayerScreen()
@@ -40,7 +42,10 @@ def setup():
 
 def draw():
     global start, interval, begin, minigame, SCREENSTATE,test, idle2, idle2On, idleOn, idle, loopingGif
-    background(loopingGif)      
+    if SCREENSTATE == -1:
+        background(15)
+    else:
+        background(loopingGif)
     if (SCREENSTATE == -1):
         startScreen.show()
         if startScreen.SCREENSTATE == 0:
@@ -154,16 +159,16 @@ def timer():
 def mousePressed():
     global selectedPlayer, SCREENSTATE
     if SCREENSTATE ==1: 
-        if mouseX < 70 and mouseX > 10 and mouseY < 20 and mouseY > 6: #Jayant
+        if mouseX < 70 and mouseX > 10 and mouseY < 49 and mouseY > 35: #Speler 1
             selectedPlayer = playerScreen.player1
             print(selectedPlayer.name)
-        elif mouseX < 732 and mouseX > 667 and mouseY < 20 and mouseY > 6: #Dennis
+        elif mouseX < 732 and mouseX > 667 and mouseY < 49 and mouseY > 35: #Speler 2
             selectedPlayer = playerScreen.player2
             print(selectedPlayer.name)
-        elif mouseX < 87 and mouseX > 10 and mouseY >556  and mouseY < 569: #sharoek
+        elif mouseX < 87 and mouseX > 10 and mouseY > 543  and mouseY < 562: #Speler 3
             selectedPlayer = playerScreen.player3
             print(selectedPlayer.name)
-        elif mouseX < 730 and mouseX > 670 and mouseY > 556 and mouseY < 569  : #Faraaz
+        elif mouseX < 730 and mouseX > 670 and mouseY > 543 and mouseY < 562  : #Speler 4
             selectedPlayer = playerScreen.player4
             print(selectedPlayer.name) 
 
@@ -193,7 +198,6 @@ def mouseClicked():
         SCREENSTATE = 3    
     elif SCREENSTATE == 0 and mouseX >= 651 and mouseX <= 699  and mouseY <= 323 and mouseY >= 309:#battle 
         SCREENSTATE = 1 
-        
 
 def keyPressed():
     global idleOn, idle2On
