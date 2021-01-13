@@ -4,9 +4,8 @@ from Button import *
 
 
 class PlayerScreen:
-    def __init__(self):
-         print("Jeetje Joh.")
     
+    #Maakt alle spelers en knoppen van het player screen aan
     def initialise(self):
         global player1, player2, player3, player4, buttonAtt, buttonBattle, SCREENSTATE
         self.player1 = Player("Speler 1", 3, "green")
@@ -53,10 +52,9 @@ class PlayerScreen:
         else:
             noStroke()
             fill('#c4d6e2')
-            
-        
     
-
-
-    
-    
+    def reset(self):
+        self.player1.health = 3
+        self.player2.health = 3
+        self.player3.health = 3
+        self.player4.health = 3

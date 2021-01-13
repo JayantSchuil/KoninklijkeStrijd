@@ -9,17 +9,15 @@ class IntroScreen:
         self.SCREENSTATE = -1
 
     def show(self):
-        self.opacity = self.opacity + self.interval
+        self.opacity = self.opacity + self.interval   #Zorgt voor fade in en fade out van de intro
         if self.opacity > 255.0:
             if self.timer == 15:
                 self.interval = -2.5
                 self.fadeOut = True
             else:
                 self.timer += 1
-        elif self.fadeOut and self.opacity < 0.0:
-            #set new status here
+        elif self.fadeOut and self.opacity < 0.0:     #Na de fade out verandert het naar het volgende scherm
             self.SCREENSTATE = 0
-            #print("Status = menu")
         image(self.intro, 0, 0)
         tint(255, self.opacity)
         if self.SCREENSTATE == 0:

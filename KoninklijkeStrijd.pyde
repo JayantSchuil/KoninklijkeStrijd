@@ -45,6 +45,7 @@ def draw():
         background(15)
     else:
         background(loopingGif)
+    #Hier word tussen de verschillende schermen geswitched a.d.h.v. de SCREENSTATE variabele
     if (SCREENSTATE == -1):
         startScreen.show()
         if startScreen.SCREENSTATE == 0:
@@ -83,8 +84,9 @@ def sprite():
     if key == 'm':
         image(attack2[index%11],375,300)
         index += 12                
-                
-def drawMenu(): 
+
+#Drawt alle componenten van het menu
+def drawMenu():
     global SCREENSTATE, bgIndex
     texts('Battle', 675, 325)
     texts('Credits', 675, 375)
@@ -94,6 +96,7 @@ def drawMenu():
     rect(600, 300, 150, 200)
     mouseOver()
  
+#Drawt alle componenten van de credits
 def drawCredits():
     global SCREENSTATE, bgIndex,x   
     texts('Return', 675, 325)
@@ -129,6 +132,7 @@ def texts(x, pos1, pos2):
     textAlign(CENTER)
     text(x, pos1, pos2)
     
+#functie om de buttons in het menu te laten reageren op als de muis pointer erover gaat
 def mouseOver():
     if mouseX <= 725 and mouseX >= 625 and mouseY <= 423 and mouseY >= 411:
         texts('Quit Game', 675, 425)
@@ -153,7 +157,7 @@ def timer():
         start = 'OFF'
         SCREENSTATE = 4                    
                                     
-        
+#Reageert op muis knoppen indrukken
 def mousePressed():
     global selectedPlayer, SCREENSTATE
     if SCREENSTATE ==1: 
@@ -170,7 +174,7 @@ def mousePressed():
             selectedPlayer = playerScreen.player4
             print(selectedPlayer.name)
 
-        
+#Reageert op muis knoppen loslaten
 def mouseReleased():
     global SCREENSTATE , start, begin    
     if SCREENSTATE ==1: 
@@ -184,7 +188,8 @@ def mouseReleased():
         except:
             if playerScreen.buttonAtt.mouseOverButton():
                 pass
-        
+
+#Reageert op muis knoppen indrukken
 def mouseClicked():
     global SCREENSTATE
     click.play()
@@ -192,11 +197,13 @@ def mouseClicked():
         SCREENSTATE = 2
     elif SCREENSTATE == 2 or SCREENSTATE == 1 and mouseX >= 646 and mouseX <= 706 and mouseY <= 323 and mouseY >= 309: #Return
         SCREENSTATE = 0
+        playerScreen.reset() #reset de game wanneer je terug gaat naar het menu
     elif SCREENSTATE == 0 and mouseX >= 625 and mouseX <= 747 and mouseY <= 423 and mouseY >= 411: #Quit Game 
         SCREENSTATE = 3    
     elif SCREENSTATE == 0 and mouseX >= 651 and mouseX <= 699  and mouseY <= 323 and mouseY >= 309:#battle 
         SCREENSTATE = 1 
 
+#Reageert op toetsenbord toetsen indrukken
 def keyPressed():
     global idleOn, idle2On
     if SCREENSTATE == 4 and minigame.gameActive:
@@ -209,6 +216,7 @@ def keyPressed():
             minigame.p2keyDown = True
             sprite()
     
+#Reageert op toetsenbord toetsen loslaten
 def keyReleased():
     global idleOn, idle2On
     if SCREENSTATE == 4 and minigame.gameActive:

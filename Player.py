@@ -4,7 +4,7 @@ class Player:
         self.name = name
         self.health = health
         self.colour = colour
-        #Load the heart png with the right colour
+        #Laadt de image van het hart in
         self.heartImage = loadImage("heart_" + self.colour + ".png")
         self.banner =  loadImage("banner_" + self.colour + ".png")
         
@@ -20,7 +20,7 @@ class Player:
         text(self.name, x, y)
         
         for i in range(self.health):
-            #Place the image of the heart with on the right place.
+            #Plaatst de image van het hart onder de naam
             image(self.heartImage, (x - 40) + 30 * i, y + 8, 25, 25)
             #text("X", x + 20 * i, y + 20)
             
