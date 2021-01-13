@@ -7,8 +7,6 @@ class PlayerScreen:
         print("Jeetje Joh.")
     
     def initialise(self):
-        #initialiseert alle attributes van deze class, had in de __init__ gekund maar kwam hier later pas achter.
-        #en toen was het al te ver
         global player1, player2, player3, player4, buttonAtt, buttonBattle
         self.player1 = Player("Speler 1", 3, "green")
         self.player2 = Player("Speler 2", 3, "red")
