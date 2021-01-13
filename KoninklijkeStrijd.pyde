@@ -18,7 +18,6 @@ idle2On = 'ON'
 
 def setup():
     global loopingGif, startScreen, sf, click, SCREENSTATE, playerScreen, start, minigame,attack1, idle, attack2, attack1, idle2
- 
     size(800, 600)
     frameRate(27)
     playerScreen = PlayerScreen()
@@ -39,7 +38,7 @@ def setup():
     loopingGif.loop()
     loopingGif.play()
 
-
+#In de draw worden de states gedefinieerd 
 def draw():
     global start, interval, begin, minigame, SCREENSTATE,test, idle2, idle2On, idleOn, idle, loopingGif
     if SCREENSTATE == -1:
@@ -75,6 +74,7 @@ def draw():
             else:
                 minigame.winTimer += 1
                 
+#De functie zorgt ervoor dat de sprites een 'aanval' animatie hebben                                
 def sprite():
     global attack1, index,idleOn
     if key == 'z':
@@ -84,7 +84,6 @@ def sprite():
         image(attack2[index%11],375,300)
         index += 12                
                 
-
 def drawMenu(): 
     global SCREENSTATE, bgIndex
     texts('Battle', 675, 325)
@@ -144,8 +143,7 @@ def mouseOver():
         noStroke()
         fill('#c4d6e2')
         
-                                
-
+#Een timer om af te tellen voor de gevecht                                
 def timer():
     global start, time, SCREENSTATE
     t = interval-int(millis()-begin)/1000
