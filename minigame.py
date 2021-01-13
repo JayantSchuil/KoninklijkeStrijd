@@ -8,6 +8,9 @@ class minigame:
         self.scoreLimit = 60
         self.winnerDecided = False
         self.winTimer = 0
+
+        
+        
         
     def show(self):
         fill(255)
@@ -28,6 +31,9 @@ class minigame:
     def reset(self):
         self.p1score = 0
         self.p2score = 0
-        self.scoreLimit = 100
+        self.scoreLimit = 60
         self.winnerDecided = False
         self.winTimer = 0
+        
+
+    

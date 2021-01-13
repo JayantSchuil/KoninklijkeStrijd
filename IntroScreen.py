@@ -1,13 +1,12 @@
-import Menu
-
 class IntroScreen:
     def  __init__(self):
         global IntroScreen
-        self.img = loadImage("intro.png")
+        self.intro = loadImage("intro.png")
         self.opacity = 0.0
         self.timer = 0
         self.interval = 5
         self.fadeOut = False
+        self.SCREENSTATE = -1
 
     def show(self):
         self.opacity = self.opacity + self.interval
@@ -18,8 +17,10 @@ class IntroScreen:
             else:
                 self.timer += 1
         elif self.fadeOut and self.opacity < 0.0:
-            Menu.draw()
             #set new status here
-            # print("Status = menu")
-        image(self.img, 0, 0)
+            self.SCREENSTATE = 0
+            #print("Status = menu")
+        image(self.intro, 0, 0)
         tint(255, self.opacity)
+        if self.SCREENSTATE == 0:
+            noTint()
