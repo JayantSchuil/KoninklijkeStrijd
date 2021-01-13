@@ -10,7 +10,7 @@ class Button:
         rectMode(CENTER)
         fill(0,50)
         rect(self.x, self.y, self.w, self.h)
-        fill(0)
+        fill(255)
         text(self.buttonText, self.x - 27, self.y + 5, 10)
     
     #Check of de muis over de button hovered
